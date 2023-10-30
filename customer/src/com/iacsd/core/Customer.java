@@ -13,12 +13,14 @@ public class Customer implements Comparable<Customer>{
 	private double registrationAmount;
 	private LocalDate dob;
 	private ServicePlan plan;
+	private LocalDate regDate;
+	private LocalDate lastSubscriptionDate;
 	
 	static {
 		idCounter = 100;
 	}
 
-	public Customer(String firstName, String lastName, String email, String password, double registrationAmount,
+	public Customer(String firstName, String lastName, String email, String password,LocalDate regDate, double registrationAmount,
 			LocalDate dob, ServicePlan plan) {
 		super();
 		this.custId = idCounter++;
@@ -26,12 +28,74 @@ public class Customer implements Comparable<Customer>{
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
+		this.regDate = regDate;
 		this.registrationAmount = registrationAmount;
 		this.dob = dob;
 		this.plan = plan;
+		this.lastSubscriptionDate = LocalDate.now();
 	}
 	
 	
+
+	public LocalDate getRegDate() {
+		return regDate;
+	}
+
+
+
+	public void setRegDate(LocalDate regDate) {
+		this.regDate = regDate;
+	}
+
+
+
+	public LocalDate getLastSubscriptionDate() {
+		return lastSubscriptionDate;
+	}
+
+
+
+	public static void setIdCounter(int idCounter) {
+		Customer.idCounter = idCounter;
+	}
+
+
+
+	public void setCustId(int custId) {
+		this.custId = custId;
+	}
+
+
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+
+	public void setPlan(ServicePlan plan) {
+		this.plan = plan;
+	}
+
+
+
+	public void setLastSubscriptionDate(LocalDate lastSubscriptionDate) {
+		this.lastSubscriptionDate = lastSubscriptionDate;
+	}
+
+
 
 	public Customer(String email) {
 		super();
@@ -97,7 +161,8 @@ public class Customer implements Comparable<Customer>{
 	
 	@Override
 	public boolean equals(Object o) {
-		if(o instanceof Customer c) {
+		if(o instanceof Customer) {
+			Customer c = (Customer)o;
 			return this.email.equals(c.email);
 		}
 		
