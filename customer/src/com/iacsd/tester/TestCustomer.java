@@ -53,22 +53,25 @@ public class TestCustomer {
 					
 					case 4:
 						System.out.println("Enter Email and Password");
-						boolean removed = customer.remove(new Customer(sc.next()));
-						if(removed) {
-							System.out.println("Customer has been removed");
-						}
-						else
-							throw new InvalidPlanException("Customer details can't be removed: Invalid Email!!");
-//						for(Customer custom: customers.values()) {
-//							if(custom.getEmail().equals(sc.next()) && custom.getPassword().equals(sc.next())) { 
+//						boolean removed = customer.remove(new Customer(sc.next()));
+//						if(removed) {
+//							System.out.println("Customer has been removed");
+//						}
+//						else
+//							throw new InvalidPlanException("Customer details can't be removed: Invalid Email!!");
+						String email = sc.next(), password = sc.next();
+						for(Customer custom: customers.values()) {
+							if(custom.getEmail().equals(email) && custom.getPassword().equals(password)) { 
 //								for(Entry<String, Customer> entry : customers.entrySet()) {
 //									if(entry.getValue().equals(custom)) {
 //										customers.remove(entry.getKey());
 //										System.out.println("Customer has been removed");
 //									}
 //								}
-//							}
-//						}
+								customers.remove(custom.getEmail());
+							}
+						}
+						for(Customer customs: customers.values())System.out.println(customs);
 						break;
 						
 					case 5:

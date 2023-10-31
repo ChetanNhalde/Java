@@ -57,7 +57,6 @@ public class validateRules {
 		int index = customers.indexOf(new Customer(email));
 		if(index == -1) throw new InvalidPlanException("Invalid Email!");
 		Customer c = customers.get(index);
-		Customer newCustomer = new Customer(email,password);
 		if(!c.getPassword().equals(password)) throw new InvalidPlanException("Invalid Password");
 		
 		return c;
