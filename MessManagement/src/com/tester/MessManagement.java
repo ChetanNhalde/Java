@@ -1,15 +1,13 @@
 package com.tester;
 
-import java.util.Collections;
-import java.util.Comparator;
+
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
 
 
-
+import static com.utils.IOUtils.*;
 import static com.utils.customerUtils.populateCustomer;
 import static com.utils.ValidatateRules.*;
 import com.code.Customer;
@@ -46,7 +44,7 @@ C) According to date of registration
 						+ "\n7.Unsbscribe Customer\n8.Display all customer"
 						+ "\n9.Modify Customers first name\n10.Display email who registered in january\n"
 						+ "11.Display count customers who have register for monthly plan\n"
-						+ "12.Search Customer\n0.20% Discount for 1 year pla\n13.Exit");
+						+ "12.Search Customer\n13.20% Discount for 1 year pla\n0.Exit");
 				System.out.println("Enter your choice: ");
 				try {
 				switch(sc.nextInt()) {
@@ -56,8 +54,10 @@ C) According to date of registration
 							LocalDate registerDate, String phoneNo, Plan plan,double finalAmount
 					 */
 					System.out.println("Enter String firstName, String lastName, String email, String password, String address,\r\n"
-							+ "							LocalDate registerDate, String phoneNo, Plan plan,double finalAmount");
-					storeDetails(mp,file);
+							+ "LocalDate registerDate, String phoneNo, Plan plan,double finalAmount");
+					
+					mp.putAll(readCustomerDetails(mp,file));
+//					mp.values().stream().forEach();
 					Customer c = validateAllRules(sc.next(),sc.next(),sc.next(),sc.next(),sc.next(),sc.next(),sc.next(),sc.next(),sc.nextDouble(),mp);
 					mp.put(c.getEmail(), c);
 					System.out.println("Customer added!");
@@ -118,10 +118,12 @@ C) According to date of registration
 					break;
 					
 				case 13:
-					mp.values().stream().filter(i -> i.getPlan().getPeriod() == 12).forEach(i -> i.setFinalAmount(i.getPlan().getPrice()*0.20));
+					mp.values().stream().filter(i -> i.getPlan().getPeriod() == 12).forEach(i -> i.setFinalAmount(i.getPlan().getPrice() - ( i.getPlan().getPrice()*0.20)));
 					break;
 					
 				case 0:
+					storeCustomerDetails(mp,file);
+					mp.values().stream().forEach(System.out::println);
 					exit  = true;
 					break;
 					

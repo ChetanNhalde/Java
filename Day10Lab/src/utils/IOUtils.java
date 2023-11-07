@@ -11,7 +11,6 @@ import com.app.core.Student;
 
 public interface IOUtils {
 	
-	@SuppressWarnings("unchecked")
 	static void storeStudentDetails(Map<String,Student> mp,String fname){
 		try(ObjectOutputStream in = new ObjectOutputStream(new FileOutputStream(fname))){
 			in.writeObject(mp);

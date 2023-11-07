@@ -1,8 +1,9 @@
 package com.code;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Customer {
+public class Customer implements Serializable {
 	
 	private static int counter;
 	private int customerId;

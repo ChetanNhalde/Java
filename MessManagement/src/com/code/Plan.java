@@ -1,6 +1,8 @@
 package com.code;
 
-public enum Plan {
+import java.io.Serializable;
+
+public enum Plan implements Serializable {
 
 	MONTHLY(3000,1),
 	QUATERLY(11700,3),
