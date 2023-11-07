@@ -1,0 +1,4 @@
+Product [productId=100, name=White_Bread, desc=Tasty Bread, quantity=70, price=35.0, productCategory=BREAD, manufactureDate=2022-05-09]
+Product [productId=105, name=No Maida Bread, desc=Tasty n healthy Bread, quantity=70, price=65.0, productCategory=BREAD, manufactureDate=2023-10-31]
+Product [productId=10, name=Brown_Bread, desc=Healthy Bread, quantity=100, price=40.0, productCategory=BREAD, manufactureDate=2023-11-02]
+Product [productId=13, name=Multigrain_Bread, desc=Another Healthy Bread, quantity=120, price=55.0, productCategory=BREAD, manufactureDate=2023-11-02]
